@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour
     public List<int> xpTable;
 
     public Player player;
+    public FloatingTextManager floatingTextManager;
 
     public int coins;
     public int experience;
 
 
+    /** CREATION **/
     void Awake()
     {
         if (GameManager.instance != null)
@@ -33,6 +35,17 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+    /** END **/
+
+
+
+    /** FLOATING TEXT **/
+    public void ShowText(string message, int fontSize, Color color, Vector3 position,
+        Vector3 motion, float duration)
+    {
+        floatingTextManager.SetandShow(message, fontSize, color, position, motion, duration);
+    }
+    /** END **/
 
 
 

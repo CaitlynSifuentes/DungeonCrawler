@@ -17,10 +17,10 @@ public class CoinChest : Collectable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // collects the coins
+                // collects the coins and displays that to player
                 collected = true;
-                Debug.Log("Granted " + coinsAmount + " Coins");
-
+                GameManager.instance.ShowText("+" + coinsAmount + " Coins!", 25, new Color(95 / 255f, 187 / 255f, 156 / 255f), transform.position,
+                    Vector3.up * 50, 1.5f);
 
                 //animation controls
                 _animator.SetBool("wasOpened", true);
