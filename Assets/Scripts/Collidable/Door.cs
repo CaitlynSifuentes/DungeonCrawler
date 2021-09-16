@@ -16,7 +16,9 @@ public class Door : Collidable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // Teleport player to random dungeon location
+                // Teleport player to random dungeon location and saves scene
+                GameManager.instance.SaveState();
+
                 string sceneName = sceneNames[Random.Range(0, sceneNames.Length)];
                 UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
 
