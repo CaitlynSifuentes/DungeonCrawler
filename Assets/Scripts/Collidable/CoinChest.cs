@@ -19,7 +19,7 @@ public class CoinChest : Collectable
             {
                 // collects the coins and displays that to player
                 collected = true;
-                GameManager.instance.ShowText("+" + coinsAmount + " Coins!", 25, new Color(95 / 255f, 187 / 255f, 156 / 255f), transform.position,
+                GameManager.instance.ShowText("+" + coinsAmount + " Coins!", 25, new Color(80 / 255f, 200 / 255f, 120 / 255f), transform.position,
                     Vector3.up * 50, 1.5f);
 
                 //animation controls
