@@ -2,39 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Fighter
+public abstract class Movement : Fighter
 {
     // Variables
     public float movementSpeed = 260;
-    private Vector2 zeroMovement = new Vector2(0.0f, 0.0f);
-    private Vector3 moveDelta;
-    private Rigidbody2D _rigidbody2D;
-    private Animator _animator;
 
-    // Start is called before the first frame update
-    void Start()
+    protected float ySpeed = 200f;
+    protected float xSpeed = 200f;
+
+    protected Vector2 zeroMovement = new Vector2(0.0f, 0.0f);
+    protected Vector3 moveDelta;
+    protected Rigidbody2D _rigidbody2D;
+    protected Animator _animator;
+
+
+
+    protected virtual void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    void FixedUpdate()
+    /* PLAYER MOVEMENT CONTROLS */
+    protected virtual void UpdateMotor(Vector3 input)
     {
-        /* MOVEMENT CONTROLS */
-
-        // getting horizontal and vertical input from user
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
 
         // reset moveDelta
-        moveDelta = new Vector3(x, y, 0).normalized;
+        moveDelta = input.normalized;
+
 
         // change sprite direction depending on input 
         if (moveDelta.x > 0)
@@ -46,18 +43,19 @@ public class Player : Fighter
             transform.localScale = new Vector3(-1, 1, 1);
         } // end if
 
+
         // moves player forward
         _rigidbody2D.velocity = moveDelta * Time.deltaTime * movementSpeed;
 
         if (_rigidbody2D.velocity == zeroMovement)
         {
-            _animator.SetBool("isWalking", false); 
+            _animator.SetBool("isWalking", false);
         }
         else
         {
             _animator.SetBool("isWalking", true);
-        }
-
-        /* END */
+        } // end if
     }
+    /* END */
+
 }
