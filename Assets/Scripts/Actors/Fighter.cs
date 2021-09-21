@@ -23,7 +23,7 @@ public class Fighter : MonoBehaviour
             pushDirection = (transform.position - dmg.origin).normalized * dmg.pushForce;
 
             // shows the damage amount on screen
-            GameManager.instance.ShowText(dmg.damageAmount.ToString(), (int)Random.Range(20, 30), Color.red,
+            GameManager.instance.ShowText(dmg.damageAmount.ToString(), 25, Color.red, 
                 transform.position, Vector3.zero, 1f);
 
             // if damage kills player

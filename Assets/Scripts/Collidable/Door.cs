@@ -6,6 +6,7 @@ public class Door : Collidable
 {
     // Variables
     public string[] sceneNames;
+    public GameObject interactable;
 
     protected override void OnCollide(Collider2D coll)
     {

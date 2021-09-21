@@ -6,7 +6,6 @@ public class Collidable : MonoBehaviour
 {
     // Variables 
     public ContactFilter2D _filter;
-    public GameObject interactable;
     private BoxCollider2D _boxCollider;
     private Collider2D[] hits = new Collider2D[10];
 
