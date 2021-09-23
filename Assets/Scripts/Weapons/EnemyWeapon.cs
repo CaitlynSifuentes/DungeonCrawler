@@ -7,6 +7,14 @@ public class EnemyWeapon : Collidable
     /** VARIABLES **/
     public int damage;
     public float pushForce;
+    private Animator _animator;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        _animator = GetComponent<Animator>();
+    }
 
     protected override void OnCollide(Collider2D coll)
     {
@@ -21,6 +29,8 @@ public class EnemyWeapon : Collidable
             };
 
             coll.SendMessage("RecieveDamage", dmg);
+
+            _animator.SetTrigger("Swing");
         }
     }
 }

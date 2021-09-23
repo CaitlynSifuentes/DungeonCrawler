@@ -9,6 +9,7 @@ public class Weapon : Collidable
     public int damagePoint = 1;
     public float pushForce = 1.0f;
     public int weaponLevel = 0;
+    private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private float coolDown = 0.5f;
     private float lastSwing;
@@ -20,6 +21,7 @@ public class Weapon : Collidable
     {
         base.Start();
 
+        _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -69,7 +71,7 @@ public class Weapon : Collidable
 
     private void Swing()
     {
-        Debug.Log("swing");
+        _animator.SetTrigger("Swing");
     }
     /** END **/
 }

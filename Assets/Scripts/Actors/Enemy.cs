@@ -6,17 +6,14 @@ using Pathfinding;
 public class Enemy : Fighter
 {
     /** VARIABLES **/
-    public float speed = 200f;
     public int experience = 2;
 
     public Animator _animator;
-    private SpriteRenderer _SpriteRenderer;
     public AIPath aiPath;
 
     // pathfinding //
-    private Vector3 startingPosition;
     public AIDestinationSetter destinationSetter;
-    private GameObject roamingObject;
+    public GameObject randomGameObject;
     private RandomPoint randomPoint;
     private enum State
     {
@@ -41,10 +38,7 @@ public class Enemy : Fighter
 
     private void Start()
     {
-        startingPosition = transform.position;
-        randomPoint = GetComponentInChildren<RandomPoint>();
-        roamingObject = this.gameObject.transform.GetChild(0).gameObject;
-        _SpriteRenderer = GetComponent<SpriteRenderer>();
+        randomPoint = randomGameObject.GetComponent<RandomPoint>();
     }
 
     private void Update()
@@ -56,11 +50,11 @@ public class Enemy : Fighter
         // flips the sprite to the correct direction
         if (aiPath.desiredVelocity.x >= 0.1f)
         {
-            _SpriteRenderer.flipX = false;
+            transform.localScale = Vector3.one;
         }
         else if (aiPath.desiredVelocity.x <= -0.1f)
         {
-            _SpriteRenderer.flipX = true;
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
@@ -93,7 +87,7 @@ public class Enemy : Fighter
             case State.LostTarget:
 
                 // restarts the roaming functions
-                destinationSetter.target = roamingObject.transform;
+                destinationSetter.target = randomPoint.randomTransform;
 
                 randomPoint.continueCoroutine = true;
 
