@@ -174,8 +174,8 @@ GameObject:
   - component: {fileID: 5494599010422590478}
   - component: {fileID: 6561654875731229213}
   m_Layer: 6
-  m_Name: Player
-  m_TagString: Fighter
+  m_Name: KnightPlayer
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -48,12 +48,6 @@ public class Weapon : Collidable
     {
         if (coll.tag == "Fighter")
         {
-            if (coll.name == "Player")
-            {
-                return;
-            } // end if 
-
-
             // creating damage object to send to the fighter that was hit
             Damage dmg = new Damage
             {

@@ -115,7 +115,7 @@ public class Enemy : Fighter
     {
         Destroy(gameObject);
         GameManager.instance.experience += experience;
-        GameManager.instance.ShowText("+ " + experience + " XP", 25, new Color(255 / 255f, 179 / 255f, 25 / 255f), transform.position, Vector3.up * 40, 1f);
+        GameManager.instance.ShowText("+ " + experience + " XP", 25, new Color(255 / 255f, 179 / 255f, 25 / 255f), new Vector3(transform.position.x, transform.position.y + 1, 0), Vector3.up * 40, 1f);
     }
 
 }

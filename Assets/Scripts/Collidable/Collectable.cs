@@ -11,7 +11,7 @@ public class Collectable : Collidable
     // check to ensure that the player is what hit the object
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.name == "Player")
+        if (coll.tag == "Player")
             OnCollect();
     }
 

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public List<int> weaponPrices;
     public List<int> xpTable;
 
+    public bool isGameStarted = true; // set to false before launch
     public Player player;
     public FloatingTextManager floatingTextManager;
 

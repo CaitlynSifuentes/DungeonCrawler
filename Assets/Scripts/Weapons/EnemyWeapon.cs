@@ -18,7 +18,7 @@ public class EnemyWeapon : Collidable
 
     protected override void OnCollide(Collider2D coll)
     {
-        if (coll.tag == "Fighter" && coll.name == "Player")
+        if (coll.tag == "Player")
         {
             // creating damage object to send to the fighter that was hit
             Damage dmg = new Damage
