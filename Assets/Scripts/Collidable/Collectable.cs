@@ -6,7 +6,7 @@ public class Collectable : Collidable
 {
     // variables
     protected bool collected = false;
-    public GameObject interactable;
+    protected GameObject interactable;
 
     // check to ensure that the player is what hit the object
     protected override void OnCollide(Collider2D coll)

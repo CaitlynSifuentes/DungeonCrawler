@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine;
 
-public class Door : Collidable
+public class ShopDoor : Collidable
 {
     // Variables
-    public int levelNumber;
     private GameObject interactable;
 
     protected override void Start()
@@ -28,9 +27,10 @@ public class Door : Collidable
                 // Teleport player to random dungeon location and saves scene
                 GameManager.instance.SaveState();
 
-                GameManager.instance.DefeatedLevel(levelNumber);
+                // loads next dungeon in queue
+                SceneManager.LoadSceneAsync(GameManager.instance.nextLevel, LoadSceneMode.Additive);
 
-                GameManager.instance.UnloadScene(GameManager.instance.previousLevel);
+                GameManager.instance.UnloadScene("ShopFloor");
 
                 // UI element
                 interactable.SetActive(false);

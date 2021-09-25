@@ -9,7 +9,6 @@ public class CameraMovement : MonoBehaviour
     public float boundX = 0.001f;
     public float boundY = 0.001f;
 
-
     // Update is called once per frame
     void LateUpdate()
     {

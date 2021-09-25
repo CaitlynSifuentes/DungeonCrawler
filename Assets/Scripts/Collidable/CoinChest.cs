@@ -8,6 +8,14 @@ public class CoinChest : Collectable
     public int coinsAmount = 10;
     public Animator _animator;
 
+    protected override void Start()
+    {
+        base.Start();
+
+        interactable = GameManager.instance.interactible;
+    }
+
+
     protected override void OnCollect()
     {
         if (!collected)
@@ -19,8 +27,11 @@ public class CoinChest : Collectable
             {
                 // collects the coins and displays that to player
                 collected = true;
+
                 GameManager.instance.ShowText("+" + coinsAmount + " Coins!", 25, new Color(80 / 255f, 200 / 255f, 120 / 255f), new Vector3(transform.position.x, transform.position.y + 1, 0),
                     Vector3.up * 50, 1.5f);
+
+                GameManager.instance.coins += coinsAmount;
 
                 //animation controls
                 _animator.SetBool("wasOpened", true);

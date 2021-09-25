@@ -1,25 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
     // variables
     public Animator _animator;
-    public Canvas hud;
+
+    public Text levelText, coinsText, upgradeCostText, xpText;
+    public List<Image> healthHearts;
+
+    public Image weaponSprite;
 
     private bool isGamePaused = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
+        // when to pause / resume game
         if (GameManager.instance.isGameStarted && Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isGamePaused)
@@ -33,17 +33,21 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+
+
+    /** PAUSING GAME **/
     private void Resume()
     {
         _animator.SetBool("isHidden", true);
-        hud.enabled = true;
+        GameManager.instance.hud.enabled = true;
         isGamePaused = false;
     }
 
     private void Pause()
     {
         _animator.SetBool("isHidden", false);
-        hud.enabled = false;
+        GameManager.instance.hud.enabled = false;
         isGamePaused = true;
     }
+    /** END **/
 }

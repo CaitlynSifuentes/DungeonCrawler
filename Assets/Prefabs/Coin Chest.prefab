@@ -156,6 +156,5 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  interactable: {fileID: 0}
   coinsAmount: 10
   _animator: {fileID: 7186744608860952137}

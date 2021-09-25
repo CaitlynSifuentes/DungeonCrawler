@@ -25,7 +25,7 @@ public class Enemy : Fighter
 
 
     // chasing
-    public Transform playerTarget;
+    private Transform playerTarget;
     public float targetRange = 5f;
 
     // lost target
@@ -38,6 +38,7 @@ public class Enemy : Fighter
 
     private void Start()
     {
+        playerTarget = GameManager.instance.player.transform;
         randomPoint = randomGameObject.GetComponent<RandomPoint>();
     }
 

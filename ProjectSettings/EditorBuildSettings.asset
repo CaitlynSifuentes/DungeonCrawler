@@ -6,9 +6,48 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
+    path: Assets/Scenes/NeverUnload.unity
+    guid: 4482dc6ac3af9a24198af4772d270b53
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: e4c86534c1c9cad47bc11cdb363d7935
+  - enabled: 1
+    path: Assets/Scenes/ShopFloor.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/dungeon1.unity
-    guid: 56c15fd25a3def74b8f2dcbf3378013f
+    path: Assets/Scenes/DungeonLevels/Dungeon0.unity
+    guid: 56454a95ca49b74429276e1ea17c389e
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon1.unity
+    guid: 3b1be53fabafc7c47b2912db60828c4f
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon2.unity
+    guid: d86b82126befe8049b8dceb1242db545
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon3.unity
+    guid: cd2e5a7ca25925043b169bc4e7d696b3
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon4.unity
+    guid: 3df3a1fd525610842ad58faeaf7b09af
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon5.unity
+    guid: 3e5118a1d716d8347bd6a63f6aa50723
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon6.unity
+    guid: 5de291df3f9f44b4ea55d8f39de63ea6
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon7.unity
+    guid: accc1f0ff90118f4c957bebbe0bba4ab
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon8.unity
+    guid: 9eb858f3941787c4f82157e717c2e6d0
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon9.unity
+    guid: c97f6c281550b5242a5b0841651b7383
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon10.unity
+    guid: acbe95faa58dfef4fac355a4828bbf03
+  - enabled: 1
+    path: Assets/Scenes/DungeonLevels/Dungeon11.unity
+    guid: 7ead4ece89327fb4e96877847a68073d
   m_configObjects: {}

@@ -2,21 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     // Variables
     public static GameManager instance;
+    private bool isSceneLoaded = false;
 
     public List<Sprite> playerSprites;
     public List<Sprite> weaponSprites;
     public List<int> weaponPrices;
     public List<int> xpTable;
 
-    public bool isGameStarted = true; // set to false before launch
-    public Player player;
+    public int currentCharacterSelection = 0;
+    public Image characterSelectionSprite;
+
+    public bool isGameStarted = false;
+
+    public GameObject player;
+    public Canvas hud;
+    public GameObject interactible;
+    public Player playerScript;
     public FloatingTextManager floatingTextManager;
 
+    public List<string> dungeonScenes;
+    public string previousLevel;
+    public string nextLevel;
+
+    public int dungeonLevel;
     public int coins;
     public int experience;
 
@@ -24,20 +38,36 @@ public class GameManager : MonoBehaviour
     /** CREATION **/
     void Awake()
     {
-        if (GameManager.instance != null)
+        if (!isSceneLoaded)
         {
-            Destroy(gameObject);
-            return;
+            instance = this;
+
+            SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+
+            isSceneLoaded = true;
+        }
+
+        player.SetActive(false);
+        hud.enabled = false;
+    }
+
+    public void UnloadScene(string scene)
+    {
+        StartCoroutine(Unload(scene));
+    }
+
+    IEnumerator Unload(string scene)
+    {
+        yield return null;
+
+        SceneManager.UnloadSceneAsync(scene);
+
+        if (interactible.activeSelf == true)
+        {
+            interactible.SetActive(false);
         } // end if
-
-        instance = this;
-
-        SceneManager.sceneLoaded += LoadState;
-
-        DontDestroyOnLoad(gameObject);
     }
     /** END **/
-
 
 
     /** FLOATING TEXT **/
@@ -80,7 +110,21 @@ public class GameManager : MonoBehaviour
         coins = int.Parse(data[1]);
         experience = int.Parse(data[2]);
         // change weapon level
+        // save dungeon level
     }
 
+    /** END **/
+
+
+
+    /** BEATING LEVEL **/
+    public void DefeatedLevel(int levelNum)
+    {
+        previousLevel = dungeonScenes[levelNum];
+        dungeonScenes.RemoveAt(levelNum);
+        nextLevel = dungeonScenes[levelNum + 1];
+
+        SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Additive);
+    }
     /** END **/
 }
