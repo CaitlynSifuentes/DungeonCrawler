@@ -9,20 +9,18 @@ public class PauseMenu : MonoBehaviour
     // variables
     public Animator _animator;
 
-    public Text levelText, coinsText, upgradeCostText, xpText;
+    public Text levelText, coinsText, xpText;
     public List<Image> healthHearts;
 
-    public Image weaponSprite;
-
-    private bool isGamePaused = false;
+    public Image characterSelectionSprite;
 
     // Update is called once per frame
     void Update()
     {
         // when to pause / resume game
-        if (GameManager.instance.isGameStarted && Input.GetKeyDown(KeyCode.Escape))
+        if (GameManager.instance.isGameStarted && !GameManager.instance.isShopOpen && Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isGamePaused)
+            if (!GameManager.instance.isGamePaused)
             {
                 Pause();
             }
@@ -33,21 +31,31 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-
-
     /** PAUSING GAME **/
-    private void Resume()
+    public void Resume()
     {
         _animator.SetBool("isHidden", true);
         GameManager.instance.hud.enabled = true;
-        isGamePaused = false;
+        GameManager.instance.isGamePaused = false;
     }
 
     private void Pause()
     {
+        UpdateStats();
         _animator.SetBool("isHidden", false);
         GameManager.instance.hud.enabled = false;
-        isGamePaused = true;
+        GameManager.instance.isGamePaused = true;
     }
+    /** END **/
+
+
+    /** UPDATING STATS **/
+    private void UpdateStats()
+    {
+        coinsText.text = GameManager.instance.coins.ToString();
+        characterSelectionSprite.sprite = GameManager.instance.playerSprites[GameManager.instance.currentCharacterSelection];
+
+    }
+
     /** END **/
 }

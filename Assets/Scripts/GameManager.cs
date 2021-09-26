@@ -10,17 +10,20 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     private bool isSceneLoaded = false;
 
+    public List<RuntimeAnimatorController> playerControllers;
     public List<Sprite> playerSprites;
     public List<Sprite> weaponSprites;
     public List<int> weaponPrices;
     public List<int> xpTable;
 
     public int currentCharacterSelection = 0;
-    public Image characterSelectionSprite;
 
     public bool isGameStarted = false;
+    public bool isGamePaused = false;
+    public bool isShopOpen = false;
 
     public GameObject player;
+    public Weapon weapon;
     public Canvas hud;
     public GameObject interactible;
     public Player playerScript;
@@ -90,7 +93,7 @@ public class GameManager : MonoBehaviour
         s += "Skin" + "|";
         s += coins.ToString() + "|";
         s += experience.ToString() + "|";
-        s += "weaponLevel";
+        s += weapon.weaponLevel.ToString();
 
         PlayerPrefs.SetString("SaveState", s);
     }
@@ -109,12 +112,42 @@ public class GameManager : MonoBehaviour
         // Change playerSkin
         coins = int.Parse(data[1]);
         experience = int.Parse(data[2]);
-        // change weapon level
+        weapon.LoadWeapon(int.Parse(data[3]));
         // save dungeon level
     }
 
     /** END **/
 
+
+    /** CHARACTER SELECTION **/
+    public void UpdateCharacterAnimation()
+    {
+        player.GetComponent<Animator>().runtimeAnimatorController = playerControllers[currentCharacterSelection] as RuntimeAnimatorController;
+    }
+    /** END **/
+
+
+    /** WEAPON UPGRADE **/
+    public bool TryUpgradeWeapon()
+    {
+        // is weapon max level
+        if (weapon.weaponLevel >= 6)
+        {
+            return false;
+        } // end if
+
+        // does player have enough money
+        if (coins >= weaponPrices[weapon.weaponLevel])
+        {
+            coins -= weaponPrices[weapon.weaponLevel];
+            weapon.UpgradeWeapon();
+
+            return true;
+        } // end if
+
+        return false;
+    }
+    /** END **/
 
 
     /** BEATING LEVEL **/
