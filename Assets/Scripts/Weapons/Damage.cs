@@ -6,6 +6,6 @@ public struct Damage
 {
     // Variables
     public Vector3 origin;
-    public int damageAmount;
+    public float damageAmount;
     public float pushForce;
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyWeapon : Collidable
 {
     /** VARIABLES **/
-    public int damage;
+    public float damage;
     public float pushForce;
     private Animator _animator;
 
@@ -29,6 +29,8 @@ public class EnemyWeapon : Collidable
             };
 
             coll.SendMessage("RecieveDamage", dmg);
+
+            GameManager.instance.PlayerDamaged();
 
             _animator.SetTrigger("Swing");
         }

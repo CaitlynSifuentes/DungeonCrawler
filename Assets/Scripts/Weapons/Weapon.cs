@@ -6,11 +6,14 @@ using UnityEngine;
 public class Weapon : Collidable
 {
     // Variables
-    public int[] damagePoint = {1, 2, 3, 4, 5 };
+    public float[] damagePoint = {1, 2, 3, 4, 5 };
     public float[] pushForce = {1, 2, 3, 4, 5 };
+
     public int weaponLevel = 0;
+
     private Animator _animator;
     public SpriteRenderer _spriteRenderer;
+
     private float coolDown = 0.5f;
     private float lastSwing;
 

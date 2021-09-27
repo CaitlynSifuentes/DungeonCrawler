@@ -5,11 +5,14 @@ using UnityEngine;
 public class Fighter : MonoBehaviour
 {
     // Variables
-    public int hitPoints = 10;
-    public int maxHitPoint = 10;
+    public float hitPoints = 10;
+    public float maxHitPoint = 10;
+
     public float pushRecoverySpeed = 0.2f;
+
     protected float immuneTime = 1.0f;
     protected float lastImmune;
+
     protected Vector3 pushDirection;
 
 

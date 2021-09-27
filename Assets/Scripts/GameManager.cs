@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Weapon weapon;
     public Canvas hud;
+    public Hud hudScript;
     public GameObject interactible;
     public Player playerScript;
     public FloatingTextManager floatingTextManager;
@@ -82,8 +83,15 @@ public class GameManager : MonoBehaviour
     /** END **/
 
 
+    /** FLOATING TEXT **/
+    public void PlayerDamaged()
+    {
+        hudScript.UpdateHearts();
+    }
+    /** END **/
 
-    /** SAVE STATE **/
+
+    /** SAVE / LOAD STATES **/
 
     public void SaveState() // saving
     {
@@ -127,6 +135,7 @@ public class GameManager : MonoBehaviour
     /** END **/
 
 
+
     /** WEAPON UPGRADE **/
     public bool TryUpgradeWeapon()
     {
@@ -148,6 +157,65 @@ public class GameManager : MonoBehaviour
         return false;
     }
     /** END **/
+
+
+
+    /** EXPERIENCE SYSTEM **/
+    public int GetCurrentLevel()
+    {
+        int returnValue = 0;
+        int add = 0;
+
+        while (experience >= add)
+        {
+            add += xpTable[returnValue];
+
+            returnValue++;
+
+            // if player is max level
+            if (returnValue == xpTable.Count)
+            {
+                return returnValue;
+            }// end if
+
+        } // end while
+
+        return returnValue;
+    }
+
+    public int XpLeftInLevel(int level)
+    {
+        int returnValue = 0;
+        int xp = 0;
+
+        while (returnValue < level)
+        {
+            xp += xpTable[returnValue];
+            returnValue++;
+        } // end while
+
+        return xp;
+    }
+
+    public void GiveExperience(int xpGiven)
+    {
+        int currentLevel = GetCurrentLevel();
+
+        experience += xpGiven;
+        
+        if (currentLevel < GetCurrentLevel())
+        {
+            OnLevelUp();
+        } // end if
+
+    }
+
+    public void OnLevelUp()
+    {
+        playerScript.LevelUp();
+    }
+    /** END **/
+
 
 
     /** BEATING LEVEL **/

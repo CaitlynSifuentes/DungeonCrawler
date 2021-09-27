@@ -183,7 +183,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damage: 0
+  damage: 0.5
   pushForce: 0
 --- !u!61 &121372056
 BoxCollider2D:

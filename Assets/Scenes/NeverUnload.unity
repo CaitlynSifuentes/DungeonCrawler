@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9684445
 RectTransform:
   m_ObjectHideFlags: 0
@@ -353,7 +353,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  damagePoint: 0100000002000000030000000400000005000000
+  damagePoint: []
   pushForce:
   - 1
   - 2
@@ -475,7 +475,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &104074191
 RectTransform:
   m_ObjectHideFlags: 0
@@ -845,6 +845,9 @@ MonoBehaviour:
   - {fileID: 268611693}
   - {fileID: 104074192}
   - {fileID: 557164312}
+  fullHeart: {fileID: 8217629324586975321, guid: 67cec4034cff2b14cbf87e4438759d56, type: 3}
+  halfHeart: {fileID: 5173855324913561754, guid: 67cec4034cff2b14cbf87e4438759d56, type: 3}
+  emptyHeart: {fileID: 6692652608688667227, guid: 67cec4034cff2b14cbf87e4438759d56, type: 3}
 --- !u!1 &205757561
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +893,7 @@ MonoBehaviour:
   - {fileID: -8143584818952536569, guid: 67097bf921a4f8243a0b5c7f1a680663, type: 3}
   - {fileID: -3219154307197777229, guid: 67097bf921a4f8243a0b5c7f1a680663, type: 3}
   weaponPrices: 1e0000003c0000005a0000006400000096000000
-  xpTable: 
+  xpTable: 050000000a0000000f0000001400000019000000
   currentCharacterSelection: 0
   isGameStarted: 0
   isGamePaused: 0
@@ -898,6 +901,7 @@ MonoBehaviour:
   player: {fileID: 821738584}
   weapon: {fileID: 54684221}
   hud: {fileID: 184624183}
+  hudScript: {fileID: 184624185}
   interactible: {fileID: 2068288452}
   playerScript: {fileID: 821738586}
   floatingTextManager: {fileID: 1304400030}
@@ -1016,7 +1020,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &264965930
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1091,7 +1095,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &268611692
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1166,7 +1170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &283859256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1470,7 +1474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &540780053
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1545,7 +1549,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &557164311
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1666,7 +1670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &693067223
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1820,7 +1824,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &767834452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1895,7 +1899,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &771298598
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2005,8 +2009,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b2eff90056021d41a45faad95b0aa8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 10
-  maxHitPoint: 10
+  hitPoints: 2
+  maxHitPoint: 2
   pushRecoverySpeed: 0.2
   movementSpeed: 260
 --- !u!50 &821738587
@@ -2544,7 +2548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1145323970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3128,7 +3132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1476458326
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3356,7 +3360,7 @@ MonoBehaviour:
   _animator: {fileID: 1529804303}
   levelText: {fileID: 978798600}
   coinsText: {fileID: 765495742}
-  xpText: {fileID: 0}
+  xpText: {fileID: 955167221}
   healthHearts:
   - {fileID: 1696351072}
   - {fileID: 1777644735}
@@ -3369,6 +3373,9 @@ MonoBehaviour:
   - {fileID: 540780054}
   - {fileID: 767834453}
   characterSelectionSprite: {fileID: 942348948}
+  fullHeart: {fileID: 8217629324586975321, guid: 67cec4034cff2b14cbf87e4438759d56, type: 3}
+  halfHeart: {fileID: 5173855324913561754, guid: 67cec4034cff2b14cbf87e4438759d56, type: 3}
+  emptyHeart: {fileID: 6692652608688667227, guid: 67cec4034cff2b14cbf87e4438759d56, type: 3}
 --- !u!95 &1529804303
 Animator:
   serializedVersion: 3
@@ -3499,7 +3506,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1568751938
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3574,7 +3581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1581266190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4169,7 +4176,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1808577632
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4329,7 +4336,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1862625383
 RectTransform:
   m_ObjectHideFlags: 0

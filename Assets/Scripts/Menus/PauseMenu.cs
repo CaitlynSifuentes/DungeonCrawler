@@ -13,6 +13,13 @@ public class PauseMenu : MonoBehaviour
     public List<Image> healthHearts;
 
     public Image characterSelectionSprite;
+    public Sprite fullHeart;
+    public Sprite halfHeart;
+    public Sprite emptyHeart;
+
+    private float playerHealth;
+    private float playerMaxHealth;
+
 
     // Update is called once per frame
     void Update()
@@ -30,6 +37,7 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
+
 
     /** PAUSING GAME **/
     public void Resume()
@@ -52,9 +60,56 @@ public class PauseMenu : MonoBehaviour
     /** UPDATING STATS **/
     private void UpdateStats()
     {
+        levelText.text = "Level " + GameManager.instance.GetCurrentLevel().ToString();
+
+        int currentLevel = GameManager.instance.GetCurrentLevel();
+        int previousLevelXp = GameManager.instance.XpLeftInLevel(currentLevel - 1);
+        int currentLevelXp = GameManager.instance.XpLeftInLevel(currentLevel);
+        int difference = currentLevelXp - previousLevelXp;
+        int currentXpIntoLevel = GameManager.instance.experience - previousLevelXp;
+        xpText.text = currentXpIntoLevel + " / " + difference;
+
         coinsText.text = GameManager.instance.coins.ToString();
+
         characterSelectionSprite.sprite = GameManager.instance.playerSprites[GameManager.instance.currentCharacterSelection];
 
+        UpdateHearts();
+
+    }
+
+    public void UpdateHearts()
+    {
+        playerHealth = GameManager.instance.playerScript.hitPoints;
+        playerMaxHealth = GameManager.instance.playerScript.maxHitPoint;
+
+        for (int i = 0; i < healthHearts.Count; i++)
+        {
+            if (i < playerHealth)
+            {
+                if (i + 0.5 == playerHealth)
+                {
+                    healthHearts[i].sprite = halfHeart;
+                }
+                else
+                {
+                    healthHearts[i].sprite = fullHeart;
+                } // end if
+            }
+            else
+            {
+                healthHearts[i].sprite = emptyHeart;
+            } // end if
+
+
+            if (playerMaxHealth > i)
+            {
+                healthHearts[i].enabled = true;
+            }
+            else
+            {
+                healthHearts[i].enabled = false;
+            } // end if
+        }// end for
     }
 
     /** END **/

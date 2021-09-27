@@ -14,4 +14,10 @@ public class Player : Movement
         UpdateMotor(new Vector3(x, y, 0));
     }
 
+
+    public void LevelUp()
+    {
+        maxHitPoint += 2;
+        hitPoints += 2;
+    }
 }
