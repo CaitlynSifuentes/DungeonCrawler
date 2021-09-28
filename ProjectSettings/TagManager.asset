@@ -8,6 +8,7 @@ TagManager:
   - HUD
   - FloatManager
   - Interactable
+  - SpawnPosition
   layers:
   - Default
   - TransparentFX

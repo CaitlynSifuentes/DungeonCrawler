@@ -39,16 +39,19 @@ public class GameManager : MonoBehaviour
     public int experience;
 
 
-    /** CREATION **/
+    /** CREATION / SCENE MOVEMENT **/
     void Awake()
     {
         if (!isSceneLoaded)
         {
             instance = this;
+            SceneManager.sceneLoaded += LoadState;
 
             SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
 
             isSceneLoaded = true;
+
+            PlayerPrefs.DeleteAll();
         }
 
         player.SetActive(false);
@@ -110,6 +113,7 @@ public class GameManager : MonoBehaviour
     
     public void LoadState(Scene s, LoadSceneMode mode) // loading
     {
+        Debug.Log("LOADING");
         if (!PlayerPrefs.HasKey("SaveState"))
             return;
 
@@ -117,11 +121,12 @@ public class GameManager : MonoBehaviour
         string[] data = PlayerPrefs.GetString("SaveState").Split('|');
 
 
-        // Change playerSkin
         coins = int.Parse(data[1]);
         experience = int.Parse(data[2]);
+        playerScript.SetLevel(GetCurrentLevel());
         weapon.LoadWeapon(int.Parse(data[3]));
         // save dungeon level
+
     }
 
     /** END **/
@@ -213,6 +218,7 @@ public class GameManager : MonoBehaviour
     public void OnLevelUp()
     {
         playerScript.LevelUp();
+        hudScript.UpdateHearts();
     }
     /** END **/
 

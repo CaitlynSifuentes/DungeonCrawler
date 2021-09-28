@@ -28,15 +28,35 @@ public class ShopDoor : Collidable
                 GameManager.instance.SaveState();
 
                 // loads next dungeon in queue
-                SceneManager.LoadSceneAsync(GameManager.instance.nextLevel, LoadSceneMode.Additive);
+                StartCoroutine(LoadYourAsyncScene());
 
-                GameManager.instance.UnloadScene("ShopFloor");
 
                 // UI element
                 interactable.SetActive(false);
             } // end if
 
         } // end if
+    }
+
+    IEnumerator LoadYourAsyncScene()
+    {
+        // The Application loads the Scene in the background as the current Scene runs.
+        // This is particularly good for creating loading screens.
+        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
+        // a sceneBuildIndex of 1 as shown in Build Settings.
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(GameManager.instance.nextLevel, LoadSceneMode.Additive);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // spawns the player in the correct placement
+        GameManager.instance.player.transform.position = GameObject.FindGameObjectWithTag("SpawnPosition").transform.position;
+        GameManager.instance.UnloadScene("ShopFloor");
+
     }
 
     // Hiding interactive UI

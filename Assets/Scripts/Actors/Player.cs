@@ -15,9 +15,19 @@ public class Player : Movement
     }
 
 
+    /** LEVELING **/
     public void LevelUp()
     {
         maxHitPoint += 2;
         hitPoints += 2;
     }
+
+    public void SetLevel(int level)
+    {
+        for (int i = 0; i < level; i++)
+        {
+            LevelUp();
+        } // end for
+    }
+    /** END **/
 }

@@ -32,6 +32,7 @@ public class Door : Collidable
 
                 GameManager.instance.UnloadScene(GameManager.instance.previousLevel);
 
+
                 // UI element
                 interactable.SetActive(false);
             } // end if
