@@ -16,7 +16,7 @@ public class ShopMenu : MonoBehaviour
     void Update()
     {
         // when to pause / resume game
-        if (GameManager.instance.isGameStarted && !GameManager.instance.isGamePaused && Input.GetKeyDown(KeyCode.Backspace))
+        if (GameManager.instance.isGameStarted && !GameManager.instance.isGamePaused && Input.GetKeyDown(KeyCode.I))
         {
             if (GameManager.instance.isShopOpen)
             {

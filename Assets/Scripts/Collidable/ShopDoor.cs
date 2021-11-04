@@ -7,12 +7,14 @@ public class ShopDoor : Collidable
 {
     // Variables
     private GameObject interactable;
+    private float tempPlayerHealth;
 
     protected override void Start()
     {
         base.Start();
 
         interactable = GameManager.instance.interactible;
+
     }
 
     protected override void OnCollide(Collider2D coll)
@@ -24,6 +26,9 @@ public class ShopDoor : Collidable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                // saves player health if they were damaged
+                tempPlayerHealth = GameManager.instance.playerScript.hitPoints;
+
                 // Teleport player to random dungeon location and saves scene
                 GameManager.instance.SaveState();
 
@@ -57,6 +62,10 @@ public class ShopDoor : Collidable
         GameManager.instance.player.transform.position = GameObject.FindGameObjectWithTag("SpawnPosition").transform.position;
         GameManager.instance.UnloadScene("ShopFloor");
 
+        // updates player health
+        GameManager.instance.playerScript.hitPoints = tempPlayerHealth;
+
+        GameManager.instance.PlayerDamaged();
     }
 
     // Hiding interactive UI

@@ -9,6 +9,7 @@ TagManager:
   - FloatManager
   - Interactable
   - SpawnPosition
+  - ShopFloorSpawnPoint
   layers:
   - Default
   - TransparentFX

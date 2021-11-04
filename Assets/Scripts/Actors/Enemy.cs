@@ -114,9 +114,10 @@ public class Enemy : Fighter
     /** DEATH **/
     protected override void Death()
     {
+        GameManager.instance.playerScript.movementSpeed = 260;
         Destroy(gameObject);
         GameManager.instance.GiveExperience(experience);
         GameManager.instance.ShowText("+ " + experience + " XP", 25, new Color(255 / 255f, 179 / 255f, 25 / 255f), new Vector3(transform.position.x, transform.position.y + 1, 0), Vector3.up * 40, 1f);
     }
-
+    /** END **/
 }

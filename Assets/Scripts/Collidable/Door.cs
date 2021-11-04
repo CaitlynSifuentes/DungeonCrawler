@@ -25,12 +25,13 @@ public class Door : Collidable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // Teleport player to random dungeon location and saves scene
+                // saves scene and updates health
                 GameManager.instance.SaveState();
 
                 GameManager.instance.DefeatedLevel(levelNumber);
 
-                GameManager.instance.UnloadScene(GameManager.instance.previousLevel);
+                // loads next dungeon in queue
+                StartCoroutine(LoadYourAsyncScene());
 
 
                 // UI element
@@ -38,6 +39,32 @@ public class Door : Collidable
             } // end if
 
         } // end if
+    }
+
+    IEnumerator LoadYourAsyncScene()
+    {
+        // The Application loads the Scene in the background as the current Scene runs.
+        // This is particularly good for creating loading screens.
+        // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
+        // a sceneBuildIndex of 1 as shown in Build Settings.
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(GameManager.instance.nextLevel, LoadSceneMode.Additive);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+
+        // spawns the player in the correct placement
+        GameManager.instance.player.transform.position = GameObject.FindGameObjectWithTag("SpawnPosition").transform.position;
+
+        // unloads last level
+        GameManager.instance.UnloadScene(GameManager.instance.previousLevel);
+
+        // restores player health
+        GameManager.instance.hudScript.UpdateHearts();
+
     }
 
     // Hiding interactive UI

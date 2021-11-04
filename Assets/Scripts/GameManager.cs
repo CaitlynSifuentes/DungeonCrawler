@@ -50,12 +50,13 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
 
             isSceneLoaded = true;
-
-            PlayerPrefs.DeleteAll();
         }
 
         player.SetActive(false);
         hud.enabled = false;
+
+        PlayerPrefs.DeleteAll();
+
     }
 
     public void UnloadScene(string scene)
@@ -113,7 +114,6 @@ public class GameManager : MonoBehaviour
     
     public void LoadState(Scene s, LoadSceneMode mode) // loading
     {
-        Debug.Log("LOADING");
         if (!PlayerPrefs.HasKey("SaveState"))
             return;
 
@@ -228,10 +228,9 @@ public class GameManager : MonoBehaviour
     public void DefeatedLevel(int levelNum)
     {
         previousLevel = dungeonScenes[levelNum];
-        dungeonScenes.RemoveAt(levelNum);
+
         nextLevel = dungeonScenes[levelNum + 1];
 
-        SceneManager.LoadSceneAsync(nextLevel, LoadSceneMode.Additive);
     }
     /** END **/
 }
