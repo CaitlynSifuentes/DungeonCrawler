@@ -9,6 +9,9 @@ public class PauseMenu : MonoBehaviour
     // variables
     public Animator _animator;
 
+    public AudioSource openingSound;
+    public AudioClip open;
+
     public Text levelText, coinsText, xpText;
     public List<Image> healthHearts;
 
@@ -29,6 +32,9 @@ public class PauseMenu : MonoBehaviour
         {
             if (!GameManager.instance.isGamePaused)
             {
+                // plays open sound effect
+                openingSound.PlayOneShot(open);
+
                 Pause();
             }
             else
@@ -113,4 +119,9 @@ public class PauseMenu : MonoBehaviour
     }
 
     /** END **/
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
 }

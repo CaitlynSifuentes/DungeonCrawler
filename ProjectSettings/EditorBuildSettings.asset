@@ -33,12 +33,15 @@ EditorBuildSettings:
     path: Assets/Scenes/DungeonLevels/Dungeon5.unity
     guid: 3e5118a1d716d8347bd6a63f6aa50723
   - enabled: 1
-    path: Assets/Scenes/DungeonLevels/Dungeon6.unity
+    path: Assets/Scenes/Credits.unity
+    guid: 1bf92d91fe62ea74ca714a248f857040
+  - enabled: 0
+    path: 
     guid: 5de291df3f9f44b4ea55d8f39de63ea6
-  - enabled: 1
-    path: Assets/Scenes/DungeonLevels/Dungeon7.unity
+  - enabled: 0
+    path: 
     guid: accc1f0ff90118f4c957bebbe0bba4ab
-  - enabled: 1
-    path: Assets/Scenes/DungeonLevels/Dungeon8.unity
+  - enabled: 0
+    path: 
     guid: 9eb858f3941787c4f82157e717c2e6d0
   m_configObjects: {}

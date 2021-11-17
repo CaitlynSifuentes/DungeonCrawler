@@ -8,6 +8,9 @@ public class CoinChest : Collectable
     public int coinsAmount = 10;
     public Animator _animator;
 
+    public AudioSource openingSound;
+    public AudioClip open;
+
     protected override void Start()
     {
         base.Start();
@@ -32,6 +35,9 @@ public class CoinChest : Collectable
                     Vector3.up * 50, 1.5f);
 
                 GameManager.instance.coins += coinsAmount;
+
+                // plays open sound effect
+                openingSound.PlayOneShot(open);
 
                 //animation controls
                 _animator.SetBool("wasOpened", true);

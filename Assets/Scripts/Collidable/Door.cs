@@ -25,10 +25,11 @@ public class Door : Collidable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                // ++ game level
+                GameManager.instance.DefeatedLevel(levelNumber);
+
                 // saves scene and updates health
                 GameManager.instance.SaveState();
-
-                GameManager.instance.DefeatedLevel(levelNumber);
 
                 // loads next dungeon in queue
                 StartCoroutine(LoadYourAsyncScene());

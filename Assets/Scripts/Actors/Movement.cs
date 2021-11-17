@@ -12,7 +12,7 @@ public abstract class Movement : Fighter
 
     protected Vector2 zeroMovement = new Vector2(0.0f, 0.0f);
     protected Vector3 moveDelta;
-    protected Rigidbody2D _rigidbody2D;
+    public Rigidbody2D _rigidbody2D;
     protected Animator _animator;
 
 
@@ -26,7 +26,7 @@ public abstract class Movement : Fighter
 
 
     /* PLAYER MOVEMENT CONTROLS */
-    protected virtual void UpdateMotor(Vector3 input)
+    public virtual void UpdateMotor(Vector3 input)
     {
 
         // reset moveDelta

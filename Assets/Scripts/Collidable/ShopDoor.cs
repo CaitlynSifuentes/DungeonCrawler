@@ -26,10 +26,11 @@ public class ShopDoor : Collidable
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+
                 // saves player health if they were damaged
                 tempPlayerHealth = GameManager.instance.playerScript.hitPoints;
 
-                // Teleport player to random dungeon location and saves scene
+                // Teleport player to next dungeon location and saves scene
                 GameManager.instance.SaveState();
 
                 // loads next dungeon in queue

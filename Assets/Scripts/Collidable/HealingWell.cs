@@ -5,10 +5,13 @@ using UnityEngine;
 public class HealingWell : Collidable
 {
     // Variables
-    public int healingAmount = 1;
+    public float healingAmount = 1;
+    public float maxHealingAmount = 5;
 
     private float healingCoolDown = 1f;
     private float lastHealed;
+
+    public Animator _animator;
 
     protected override void OnCollide(Collider2D coll)
     {
@@ -17,7 +20,7 @@ public class HealingWell : Collidable
             if (Time.time - lastHealed > healingCoolDown)
             {
                 lastHealed = Time.time;
-                GameManager.instance.playerScript.Heal(healingAmount);
+                _animator.SetBool("isEmpty", GameManager.instance.playerScript.Heal(healingAmount, maxHealingAmount));
 
             } // end if
 

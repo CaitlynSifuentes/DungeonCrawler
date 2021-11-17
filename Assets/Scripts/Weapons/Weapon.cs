@@ -2,17 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Weapon : Collidable
 {
     // Variables
-    public float[] damagePoint = {1, 2, 3, 4, 5 };
-    public float[] pushForce = {1, 2, 3, 4, 5 };
+    public float[] damagePoint = {0.5f, 1, 2, 3, 4, 5 };
+    public float[] pushForce = {0.5f, 1, 2, 3, 4, 5 };
 
     public int weaponLevel = 0;
 
     private Animator _animator;
     public SpriteRenderer _spriteRenderer;
+    public AudioSource swingingSound;
+    public AudioClip[] swings;
 
     private float coolDown = 0.5f;
     private float lastSwing;
@@ -34,7 +37,7 @@ public class Weapon : Collidable
     {
         base.Update();
 
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
+        if (Input.GetKeyDown(KeyCode.Mouse0) & !GameManager.instance.isGamePaused && !GameManager.instance.isShopOpen) {
             if (Time.time - lastSwing > coolDown)
             {
                 lastSwing = Time.time;
@@ -68,6 +71,9 @@ public class Weapon : Collidable
     private void Swing()
     {
         _animator.SetTrigger("Swing");
+
+        // plays swing sound effect
+        swingingSound.PlayOneShot(swings[Random.Range(0, 2)]);
     }
 
     /** END **/

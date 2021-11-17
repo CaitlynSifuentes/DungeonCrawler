@@ -8,6 +8,9 @@ public class EnemyNoWeapon : Collidable
     public float damage;
     public float pushForce;
 
+    public AudioSource weaponSoundSource;
+    public AudioClip bite;
+
     protected override void OnCollide(Collider2D coll)
     {
         if (coll.tag == "Player")
@@ -23,6 +26,10 @@ public class EnemyNoWeapon : Collidable
             coll.SendMessage("RecieveDamage", dmg);
 
             GameManager.instance.PlayerDamaged();
+
+            // plays sound
+            if (!weaponSoundSource.isPlaying)
+                weaponSoundSource.PlayOneShot(bite);
         }
     }
 }

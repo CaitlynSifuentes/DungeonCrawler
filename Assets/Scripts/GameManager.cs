@@ -56,7 +56,6 @@ public class GameManager : MonoBehaviour
         hud.enabled = false;
 
         PlayerPrefs.DeleteAll();
-
     }
 
     public void UnloadScene(string scene)
@@ -105,7 +104,8 @@ public class GameManager : MonoBehaviour
         s += "Skin" + "|";
         s += coins.ToString() + "|";
         s += experience.ToString() + "|";
-        s += weapon.weaponLevel.ToString();
+        s += weapon.weaponLevel.ToString() + "|";
+        s += dungeonLevel.ToString() + "|";
 
         PlayerPrefs.SetString("SaveState", s);
     }
@@ -125,8 +125,7 @@ public class GameManager : MonoBehaviour
         experience = int.Parse(data[2]);
         playerScript.SetLevel(GetCurrentLevel());
         weapon.LoadWeapon(int.Parse(data[3]));
-        // save dungeon level
-
+        nextLevel = "Dungeon" + int.Parse(data[4]);
     }
 
     /** END **/
@@ -227,9 +226,22 @@ public class GameManager : MonoBehaviour
     /** BEATING LEVEL **/
     public void DefeatedLevel(int levelNum)
     {
+
         previousLevel = dungeonScenes[levelNum];
 
-        nextLevel = dungeonScenes[levelNum + 1];
+        if (levelNum + 1 <= 5)
+        {
+            nextLevel = dungeonScenes[levelNum + 1];
+            dungeonLevel = levelNum + 1;
+        }
+        else
+        {
+            nextLevel = "Credits";
+
+            player.SetActive(false);
+            hud.enabled = false;
+            isGameStarted = false;
+        }
 
     }
     /** END **/

@@ -9,6 +9,9 @@ public class EnemyWeapon : Collidable
     public float pushForce;
     private Animator _animator;
 
+    public AudioSource weaponSoundSource;
+    public AudioClip[] swings;
+
     protected override void Start()
     {
         base.Start();
@@ -33,6 +36,10 @@ public class EnemyWeapon : Collidable
             GameManager.instance.PlayerDamaged();
 
             _animator.SetTrigger("Swing");
+
+            // plays sound
+            if (!weaponSoundSource.isPlaying)
+                weaponSoundSource.PlayOneShot(swings[Random.Range(0, 2)]);
         }
     }
 }

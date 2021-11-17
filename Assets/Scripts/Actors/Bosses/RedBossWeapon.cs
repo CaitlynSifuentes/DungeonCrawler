@@ -9,7 +9,10 @@ public class RedBossWeapon : Collidable
     public float pushForce;
     public Animator _animatorBoss;
 
-    private float timeBetweenDamage = 3.0f;
+    public AudioSource weaponSoundSource;
+    public AudioClip bite;
+
+    private float timeBetweenDamage = 3.5f;
     private float lastDamageDone;
 
     private float biteWaitTime = 10.0f;
@@ -28,6 +31,10 @@ public class RedBossWeapon : Collidable
             if (Time.time - lastDamageDone > timeBetweenDamage)
             {
                 lastDamageDone = Time.time;
+
+                // sound effect
+                if (!weaponSoundSource.isPlaying)
+                    weaponSoundSource.PlayOneShot(bite);
 
                 // creating damage object to send to the fighter that was hit
                 Damage dmg = new Damage
